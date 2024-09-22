@@ -1,0 +1,64 @@
+{% extends 'clientes/base.html' %}
+{% block conteudo %}
+
+    <form action="{% url 'listagem_clientes' %}" method="post"> <!-- para onde envia as info -->
+      {% csrf_token %}
+      <div style="text-align: center;" class="container"> 
+        <h1>Cadastro</h1>
+        <form>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input name="empresa" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Segmento</label>
+            <input name="segmento" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Contato</label>
+            <input name="contato" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Telefone</label>
+            <input name="telefone" class="form-control-sm" type="text">
+            </div>
+          <div class="form-group">
+            <label>Cidade</label>
+            <input name="cidade" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <input name="estado" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input name="email" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Instagram</label>
+            <input name="instagram" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>CNPJ</label>
+            <input name="cnpj" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>N° Lojas</label>
+            <input name="qtd_lojas" class="form-control-sm" type="number">
+          </div>
+          <div class="form-group">
+            <label>Observações</label>
+            <input name="observacoes" class="form-control-sm" type="text">
+          </div>
+          <div class="form-group">
+            <label>Proximo contato</label>
+            <input name="prox_contato" class="form-control-sm" type="date">
+          </div>
+          <div class="form-group">
+            <button class="form-control-sm">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </form> 
+    
+{% endblock %}
