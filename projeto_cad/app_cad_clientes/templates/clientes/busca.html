@@ -18,7 +18,8 @@
                 <th>Nº Lojas</th>
                 <th>Observações</th>
                 <th>Próximo Contato</th>
-                <th>Primeiro Contato</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +38,13 @@
                 <td>{{ cliente.qtd_lojas }}</td>
                 <td>{{ cliente.observacoes }}</td>
                 <td>{{ cliente.prox_contato }}</td>
-                <td>{{ cliente.primeiro_contato }}</td>
+                <td><a href="{% url 'editar_cliente' cliente.id_cliente %}" class="btn btn-warning">Editar</a></td>
+                <td>
+                    <form action="{% url 'excluir_cliente' cliente.id_cliente %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
             </tr>
             {% empty %}
             <tr>
