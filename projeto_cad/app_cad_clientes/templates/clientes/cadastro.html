@@ -1,7 +1,7 @@
 {% extends 'clientes/base.html' %}
 {% block conteudo %}
 
-    <form action="{% url 'cadastro' %}" method="post"> <!-- Corrigido para enviar ao 'cadastro' -->
+    <form action="{% url 'cadastro' %}" method="post"> 
       {% csrf_token %}
       <div style="text-align: center;" class="container"> 
         <h1>Cadastro</h1>
