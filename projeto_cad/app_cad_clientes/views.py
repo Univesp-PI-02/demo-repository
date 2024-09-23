@@ -14,6 +14,7 @@ def cadastro(request):
     if request.method == 'POST':
         novo_cliente = Clientes(
             empresa=request.POST.get('empresa'),
+            status=request.POST.get('status'),
             segmento=request.POST.get('segmento'),
             contato=request.POST.get('contato'),
             telefone=request.POST.get('telefone'),
@@ -41,6 +42,7 @@ def editar_cliente(request, id):
 
     if request.method == 'POST':
         cliente.empresa = request.POST.get('empresa')
+        cliente.status = request.POST.get('status')
         cliente.segmento = request.POST.get('segmento')
         cliente.contato = request.POST.get('contato')
         cliente.telefone = request.POST.get('telefone')

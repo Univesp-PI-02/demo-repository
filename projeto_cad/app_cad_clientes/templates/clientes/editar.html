@@ -10,6 +10,17 @@
           <input name="empresa" class="form-control-sm" type="text" value="{{ cliente.empresa }}">
         </div>
         <div class="form-group">
+          <label>Status</label>
+          <select name="status" class="form-control-sm">
+              <option value="Sondagem">Sondagem</option>
+              <option value="Apresentando">Apresentando</option>
+              <option value="Negociando">Negociando</option>
+              <option value="Cliente">Cliente</option>
+              <option value="Sem viabilidade">Sem Viabilidade</option>
+              <option value="Sem interesse">Sem Interesse</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label>Segmento</label>
           <input name="segmento" class="form-control-sm" type="text" value="{{ cliente.segmento }}">
         </div>

@@ -2,6 +2,7 @@ from django.db import models
 
 class Clientes(models.Model):
     id_cliente = models.AutoField(primary_key=True)  
+    status = models.CharField(max_length=50) 
     empresa = models.CharField(max_length=150) 
     segmento = models.CharField(max_length=100)
     contato = models.CharField(max_length=100)
