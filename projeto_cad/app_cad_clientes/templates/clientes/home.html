@@ -1,4 +1,36 @@
 {% extends 'clientes/base.html' %}
-{% block conteudo %}
 
+{% block conteudo %}
+<div class="container">
+    <h2>Agenda do dia:</h2>
+
+    {% if clientes_hoje %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Contato</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Próximo Contato</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes_hoje %}
+            <tr>
+                <td>{{ cliente.empresa }}</td>
+                <td>{{ cliente.contato }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.prox_contato }}</td>
+                <td><a href="{% url 'editar_cliente' cliente.id_cliente %}">Ver Detalhes</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum cliente precisa ser contatado hoje.</p>
+    {% endif %}
+</div>
 {% endblock %}
