@@ -1,0 +1,58 @@
+{% extends 'clientes/base.html' %}
+{% block conteudo %}
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Status</th>
+                <th>Segmento</th>
+                <th>Contato</th>
+                <th>Telefone</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Email</th>
+                <th>Instagram</th>
+                <th>CNPJ</th>
+                <th>Nº Lojas</th>
+                <th>Observações</th>
+                <th>Próximo Contato</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.empresa }}</td>
+                <td>{{ cliente.status }}</td>
+                <td>{{ cliente.segmento }}</td>
+                <td>{{ cliente.contato }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.cidade }}</td>
+                <td>{{ cliente.estado }}</td>
+                <td>{{ cliente.email }}</td>
+                <td>{{ cliente.instagram }}</td>
+                <td>{{ cliente.cnpj }}</td>
+                <td>{{ cliente.qtd_lojas }}</td>
+                <td>{{ cliente.observacoes }}</td>
+                <td>{{ cliente.prox_contato }}</td>
+                <td><a href="{% url 'editar_cliente' cliente.id_cliente %}" class="btn btn-warning">Editar</a></td>
+                <td>
+                    <form action="{% url 'excluir_cliente' cliente.id_cliente %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="14">Nenhum cliente encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

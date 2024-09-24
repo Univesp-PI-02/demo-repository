@@ -1,0 +1,73 @@
+{% extends 'clientes/base.html' %}
+{% block conteudo %}
+
+    <form action="{% url 'editar_cliente' cliente.id_cliente %}" method="post">
+      {% csrf_token %}
+      <div style="text-align: center;" class="container"> 
+        <h1>Editar Cliente</h1>
+        <div class="form-group">
+          <label>Empresa</label>
+          <input name="empresa" class="form-control-sm" type="text" value="{{ cliente.empresa }}">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select name="status" class="form-control-sm">
+              <option value="Sondagem">Sondagem</option>
+              <option value="Apresentando">Apresentando</option>
+              <option value="Negociando">Negociando</option>
+              <option value="Cliente">Cliente</option>
+              <option value="Sem viabilidade">Sem Viabilidade</option>
+              <option value="Sem interesse">Sem Interesse</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Segmento</label>
+          <input name="segmento" class="form-control-sm" type="text" value="{{ cliente.segmento }}">
+        </div>
+        <div class="form-group">
+          <label>Contato</label>
+          <input name="contato" class="form-control-sm" type="text" value="{{ cliente.contato }}">
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input name="telefone" class="form-control-sm" type="text" value="{{ cliente.telefone }}">
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input name="cidade" class="form-control-sm" type="text" value="{{ cliente.cidade }}">
+        </div>
+        <div class="form-group">
+          <label>Estado</label>
+          <input name="estado" class="form-control-sm" type="text" value="{{ cliente.estado }}">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input name="email" class="form-control-sm" type="email" value="{{ cliente.email }}">
+        </div>
+        <div class="form-group">
+          <label>Instagram</label>
+          <input name="instagram" class="form-control-sm" type="text" value="{{ cliente.instagram }}">
+        </div>
+        <div class="form-group">
+          <label>CNPJ</label>
+          <input name="cnpj" class="form-control-sm" type="text" value="{{ cliente.cnpj }}">
+        </div>
+        <div class="form-group">
+          <label>Nº Lojas</label>
+          <input name="qtd_lojas" class="form-control-sm" type="number" value="{{ cliente.qtd_lojas }}">
+        </div>
+        <div class="form-group">
+          <label>Observações</label>
+          <input name="observacoes" class="form-control-sm" type="text" value="{{ cliente.observacoes }}">
+        </div>
+        <div class="form-group">
+          <label>Próximo Contato</label>
+          <input name="prox_contato" class="form-control-sm" type="date" value="{{ cliente.prox_contato|date:'Y-m-d' }}">
+        </div>
+        <div class="form-group">
+          <button class="form-control-sm btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </form> 
+
+{% endblock %}
