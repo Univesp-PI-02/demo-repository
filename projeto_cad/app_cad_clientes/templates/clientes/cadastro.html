@@ -1,17 +1,17 @@
 {% extends 'clientes/base.html' %}
 {% block conteudo %}
 
-    <form action="{% url 'cadastro' %}" method="post"> 
-      {% csrf_token %}
-      <div style="text-align: center;" class="container"> 
+<form action="{% url 'cadastro' %}" method="post"> 
+    {% csrf_token %}
+    <div style="text-align: center;" class="container"> 
         <h1>Cadastro</h1>
         <div class="form-group">
             <label>Empresa</label>
-            <input name="empresa" class="form-control-sm" type="text">
+            <input name="empresa" class="form-control-sm" type="text" required>
         </div>
         <div class="form-group">
             <label>Status</label>
-            <select name="status" class="form-control-sm">
+            <select name="status" class="form-control-sm" required>
                 <option value="Sondagem">Sondagem</option>
                 <option value="Apresentando">Apresentando</option>
                 <option value="Negociando">Negociando</option>
@@ -22,27 +22,51 @@
         </div>
         <div class="form-group">
             <label>Segmento</label>
-            <input name="segmento" class="form-control-sm" type="text">
+            <input name="segmento" class="form-control-sm" type="text" required>
         </div>
         <div class="form-group">
             <label>Contato</label>
-            <input name="contato" class="form-control-sm" type="text">
+            <input name="contato" class="form-control-sm" type="text" required>
         </div>
         <div class="form-group">
             <label>Telefone</label>
-            <input name="telefone" class="form-control-sm" type="text">
+            <input name="telefone" class="form-control-sm" type="text" required>
+        </div>
+        <div class="form-group">
+            <label>Telefone 2</label>
+            <input name="telefone_2" class="form-control-sm" type="text">
+        </div>
+        <div class="form-group">
+            <label>CEP</label>
+            <input name="cep" class="form-control-sm" type="text">
+        </div>
+        <div class="form-group">
+            <label>Rua</label>
+            <input name="rua" class="form-control-sm" type="text">
+        </div>
+        <div class="form-group">
+            <label>Número</label>
+            <input name="numero_end" class="form-control-sm" type="text">
+        </div>
+        <div class="form-group">
+            <label>Bairro</label>
+            <input name="bairro" class="form-control-sm" type="text">
+        </div>
+        <div class="form-group">
+            <label>Complemento</label>
+            <input name="complemento" class="form-control-sm" type="text">
         </div>
         <div class="form-group">
             <label>Cidade</label>
-            <input name="cidade" class="form-control-sm" type="text">
+            <input name="cidade" class="form-control-sm" type="text" required>
         </div>
         <div class="form-group">
             <label>Estado</label>
-            <input name="estado" class="form-control-sm" type="text">
+            <input name="estado" class="form-control-sm" type="text" required>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input name="email" class="form-control-sm" type="text">
+            <input name="email" class="form-control-sm" type="email" required>
         </div>
         <div class="form-group">
             <label>Instagram</label>
@@ -57,17 +81,24 @@
             <input name="qtd_lojas" class="form-control-sm" type="number">
         </div>
         <div class="form-group">
-            <label>Observações</label>
-            <input name="observacoes" class="form-control-sm" type="text">
+            <label>Próximo contato</label>
+            <input name="prox_contato" class="form-control-sm" type="datetime-local" required>
         </div>
         <div class="form-group">
-            <label>Próximo contato</label>
-            <input name="prox_contato" class="form-control-sm" type="date">
+            <label>Primeiro contato</label>
+            <input name="primeiro_contato" class="form-control-sm" type="datetime-local">
+        </div>
+        
+        <!-- Adicionar Observação -->
+        <div class="form-group">
+            <label>Adicionar Observação</label>
+            <textarea name="observacoes" class="form-control-sm" rows="3"></textarea>
         </div>
         <div class="form-group">
             <button class="form-control-sm" type="submit">Enviar</button>
         </div>
-      </div>
-    </form> 
+    </div>
+</form>
+
 
 {% endblock %}
