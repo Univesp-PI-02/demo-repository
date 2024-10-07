@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: anishathalye/proof-html@v1.1.0
         with:
-          directory: demo-repository/projeto_cad/app_cad_clientes/templates/clientes/home.html
+          directory:./
