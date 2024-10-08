@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
 from datetime import date
 
-def home(request):
+def index(request):
     hoje = date.today()
     clientes_hoje = Clientes.objects.filter(prox_contato=hoje)
     context = {
         'clientes_hoje': clientes_hoje
     }
-    return render(request, 'clientes/home.html', context)
+    return render(request, 'clientes/index.html', context)
 
 def cadastro(request):
     if request.method == 'POST':

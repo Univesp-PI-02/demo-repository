@@ -3,7 +3,7 @@ from django.urls import path
 from app_cad_clientes import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.index, name='index'),
     path('clientes/', views.clientes, name='listagem_clientes'),
     path('cadastro/', views.cadastro, name='cadastro'),
     path('editar/<int:id>/', views.editar_cliente, name='editar_cliente'),
