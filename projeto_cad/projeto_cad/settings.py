@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-gs1!vmql@7$nc7u^b+&&g9#u2$iimni8(37@ssxx_0h#jbler$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [equilibreclientes.azurewebsites.net]
+ALLOWED_HOSTS = ['equilibreclientes.azurewebsites.net']
 
 
 # Application definition
