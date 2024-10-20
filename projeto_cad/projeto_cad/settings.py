@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-gs1!vmql@7$nc7u^b+&&g9#u2$iimni8(37@ssxx_0h#jbler$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [equilibreclientes.azurewebsites.net]
 
 
 # Application definition
