@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - equilibreapp
+name: Build and deploy Python app to Azure Web App - equilibresemgluten
 
 on:
   push:
@@ -65,14 +65,14 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C3C3BF180B324B27932128406E317FC6 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_38227EF06D654EA6AB19D24A38C6D9CD }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_99FF248194B2448BB7E3444EC4A09388 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4F638BAE5BEC4CEB96346082CBF6782F }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA5025E6A81D46C7BFDFE049277B6DD5 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_52ABFD9A98E4419A90E20E9926480B28 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'equilibreapp'
+          app-name: 'equilibresemgluten'
           slot-name: 'Production'
           
