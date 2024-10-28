@@ -8,7 +8,7 @@ WIBBLE2 = 'Wibble2'
 #CSRF_TRUSTED_ORIGINS = ['https://*'] 
 #CSRF_TRUSTED_ORIGINS = ['https://youdomain.azurewebsites.net']
 
-CSRF_TRUSTED_ORIGINS = ['https://equilibreapp.azurewebsites.net']
+#CSRF_TRUSTED_ORIGINS = ['https://equilibreapp.azurewebsites.net']
 # TO-ADD -- uncomment
 
 #add the next middleware for whitenoise
