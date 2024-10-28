@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-gs1!vmql@7$nc7u^b+&
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
 
 # Allowed hosts
-ALLOWED_HOSTS = os.getenv('https://equilibreapp.onrender.com','*').split(',')
+ALLOWED_HOSTS = os.getenv('https://demo-repository-4st4.onrender.com','*').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -56,7 +56,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # CSRF trusted origins
-CSRF_TRUSTED_ORIGINS = ['https://equilibreapp.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://demo-repository-4st4.onrender.com']
 
 
 ROOT_URLCONF = "projeto_cad.urls"
