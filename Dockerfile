@@ -1,47 +1,32 @@
 FROM python:3.12.7-alpine3.19
-LABEL mantainer="thaisfsouza@outlook.com"
+LABEL maintainer="thaisfsouza@outlook.com"
 
-# Essa variável de ambiente é usada para controlar se o Python deve 
-# gravar arquivos de bytecode (.pyc) no disco. 1 = Não, 0 = Sim
+# Variáveis de ambiente para otimizar o comportamento do Python
 ENV PYTHONDONTWRITEBYTECODE 1
-
-# Define que a saída do Python será exibida imediatamente no console ou em 
-# outros dispositivos de saída, sem ser armazenada em buffer.
-# Em resumo, você verá os outputs do Python em tempo real.
 ENV PYTHONUNBUFFERED 1
 
-# Copia a pasta "projeto_cad" e "scripts" para dentro do container.
-COPY projeto_cad /projeto_cad
-COPY scripts /scripts
+# Instalar dependências do sistema
+RUN apk add --no-cache gcc musl-dev libffi-dev \
+    postgresql-dev curl
 
-# Entra na pasta projeto_cad no container
+# Copiar apenas o requirements.txt
+COPY requirements.txt /projeto_cad/
+
+# Instalar as dependências Python
+RUN pip install --upgrade pip && pip install -r /projeto_cad/requirements.txt
+
+# Copiar o restante do projeto
+COPY projeto_cad /projeto_cad
+
+# Definir a pasta de trabalho
 WORKDIR /projeto_cad
 
-# A porta 8000 estará disponível para conexões externas ao container
-# É a porta que vamos usar para o Django.
+# Expor a porta 8000
 EXPOSE 8000
 
-# RUN executa comandos em um shell dentro do container para construir a imagem. 
-# O resultado da execução do comando é armazenado no sistema de arquivos da 
-# imagem como uma nova camada.
-# Agrupar os comandos em um único RUN pode reduzir a quantidade de camadas da 
-# imagem e torná-la mais eficiente.
-RUN python -m venv /venv && \
-  /venv/bin/pip install --upgrade pip && \
-  /venv/bin/pip install -r /projeto_cad/requirements.txt && \
-  adduser --disabled-password --no-create-home duser && \
-  mkdir -p /data/web/static && \
-  mkdir -p /data/web/media && \
-  chown -R duser:duser /venv && \
-  chown -R duser:duser /data/web/static && \
-  chown -R duser:duser /data/web/media && \
-  chmod -R 755 /data/web/static && \
-  chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts
+# Criar um usuário não-root para executar a aplicação (opcional)
+RUN adduser -D appuser
+USER appuser
 
-# Adiciona a pasta scripts e venv/bin 
-# no $PATH do container.
-ENV PATH="/scripts:/venv/bin:$PATH"
-
-
+# Comando para rodar o servidor Django
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
