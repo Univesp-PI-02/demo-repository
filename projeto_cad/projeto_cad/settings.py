@@ -92,7 +92,7 @@ DATABASES = {
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': os.getenv('DB_NAME', 'default_db'),
+##        'NAME': os.getenv('DB_NAME', 'default_db'),
 #        'USER': os.getenv('DB_USER', 'user'),
 #        'PASSWORD': os.getenv('DB_PASSWORD', 'password'),
 #        'HOST': os.getenv('DB_HOST', 'localhost'),
@@ -100,16 +100,6 @@ DATABASES = {
 #    } 
 #}
 
-#DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'railway',
-#        'USER': 'postgres',
-#        'PASSWORD': 'gklzpXMtfutLkSoLfrvYYaNKTviSqGGY',
-#        'HOST': 'postgres.railway.internal',
-#        'PORT': '5432',
-#   }
-#}
 
 
 # Password validation
