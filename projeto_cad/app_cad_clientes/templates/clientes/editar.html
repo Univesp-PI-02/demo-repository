@@ -1,147 +1,251 @@
 {% extends 'clientes/base.html' %}
 {% block conteudo %}
 
-<form action="{% url 'editar_cliente' cliente.id_cliente %}" method="post">
-  {% csrf_token %}
-  <div style="text-align: center;" class="container"> 
-      <h1>Editar Cliente</h1>
+<div class="container my-5">
+  <h1 class="text-center mb-4">Editar Cliente</h1>
+  <form action="{% url 'editar_cliente' cliente.id_cliente %}" method="post" class="card p-4 shadow-sm">
+    {% csrf_token %}
 
-      <div class="form-group">
-          <label>Empresa</label>
-          <input name="empresa" class="form-control-sm" type="text" value="{{ cliente.empresa }}">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label>Empresa</label>
+            <input name="empresa" class="form-control" type="text" value="{{ cliente.empresa }}">
+        </div>
+        <div class="col-md-6">
+            <label>Status</label>
+            <select name="status" class="form-control">
+                <option value="Sondagem" {% if cliente.status == 'Sondagem' %}selected{% endif %}>Sondagem</option>
+                <option value="Apresentando" {% if cliente.status == 'Apresentando' %}selected{% endif %}>Apresentando</option>
+                <option value="Negociando" {% if cliente.status == 'Negociando' %}selected{% endif %}>Negociando</option>
+                <option value="Cliente" {% if cliente.status == 'Cliente' %}selected{% endif %}>Cliente</option>
+                <option value="Sem viabilidade" {% if cliente.status == 'Sem viabilidade' %}selected{% endif %}>Sem Viabilidade</option>
+                <option value="Sem interesse" {% if cliente.status == 'Sem interesse' %}selected{% endif %}>Sem Interesse</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Segmento</label>
+        <input name="segmento" class="form-control" type="text" value="{{ cliente.segmento }}">
       </div>
 
-      <div class="form-group">
-          <label>Status</label>
-          <select name="status" class="form-control-sm">
-              <option value="Sondagem" {% if cliente.status == 'Sondagem' %}selected{% endif %}>Sondagem</option>
-              <option value="Apresentando" {% if cliente.status == 'Apresentando' %}selected{% endif %}>Apresentando</option>
-              <option value="Negociando" {% if cliente.status == 'Negociando' %}selected{% endif %}>Negociando</option>
-              <option value="Cliente" {% if cliente.status == 'Cliente' %}selected{% endif %}>Cliente</option>
-              <option value="Sem viabilidade" {% if cliente.status == 'Sem viabilidade' %}selected{% endif %}>Sem Viabilidade</option>
-              <option value="Sem interesse" {% if cliente.status == 'Sem interesse' %}selected{% endif %}>Sem Interesse</option>
-          </select>
+      <div class="col-md-6">
+        <label>Contato</label>
+        <input name="contato" class="form-control" type="text" value="{{ cliente.contato }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Telefone</label>
+        <input name="telefone" class="form-control" type="text" value="{{ cliente.telefone }}">
       </div>
 
-      <div class="form-group">
-          <label>Segmento</label>
-          <input name="segmento" class="form-control-sm" type="text" value="{{ cliente.segmento }}">
+      <div class="col-md-6">
+        <label>Telefone Secundário</label>
+        <input name="telefone_2" class="form-control" type="text" value="{{ cliente.telefone_2 }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>CEP</label>
+        <div class="d-flex">
+          <input id="cep" name="cep" class="form-control" type="text" value="{{ cliente.cep }}">
+          <button type="button" id="btn-pesquisar" class="btn btn-outline-secondary ms-2">Pesquisar</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label>Rua</label>
+        <input id="rua" name="rua" class="form-control" type="text" value="{{ cliente.rua }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label>Número</label>
+        <input name="numero_end" class="form-control" type="text" value="{{ cliente.numero_end }}">
       </div>
 
-      <div class="form-group">
-          <label>Contato</label>
-          <input name="contato" class="form-control-sm" type="text" value="{{ cliente.contato }}">
+      <div class="col-md-4">
+        <label>Bairro</label>
+        <input id="bairro" name="bairro" class="form-control" type="text" value="{{ cliente.bairro }}">
       </div>
 
-      <div class="form-group">
-          <label>Telefone</label>
-          <input name="telefone" class="form-control-sm" type="text" value="{{ cliente.telefone }}">
+      <div class="col-md-4">
+        <label>Complemento</label>
+        <input name="complemento" class="form-control" type="text" value="{{ cliente.complemento }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Cidade</label>
+        <input id="cidade" name="cidade" class="form-control" type="text" value="{{ cliente.cidade }}">
       </div>
 
-      <div class="form-group">
-          <label>Telefone Secundário</label>
-          <input name="telefone_2" class="form-control-sm" type="text" value="{{ cliente.telefone_2 }}">
+      <div class="col-md-6">
+        <label>Estado</label>
+        <input id="estado" name="estado" class="form-control" type="text" value="{{ cliente.estado }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Email</label>
+        <input name="email" class="form-control" type="email" value="{{ cliente.email }}">
       </div>
 
-      <div class="form-group">
-          <label>Cidade</label>
-          <input name="cidade" class="form-control-sm" type="text" value="{{ cliente.cidade }}">
+      <div class="col-md-6">
+        <label>Instagram</label>
+        <input name="instagram" class="form-control" type="text" value="{{ cliente.instagram }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>CNPJ</label>
+        <input name="cnpj" class="form-control" type="text" value="{{ cliente.cnpj }}">
       </div>
 
-      <div class="form-group">
-          <label>Estado</label>
-          <input name="estado" class="form-control-sm" type="text" value="{{ cliente.estado }}">
+      <div class="col-md-6">
+        <label>Nº Lojas</label>
+        <input name="qtd_lojas" class="form-control" type="number" value="{{ cliente.qtd_lojas }}">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label>Primeiro Contato</label>
+        <input name="primeiro_contato" class="form-control" type="datetime-local" value="{{ cliente.primeiro_contato|date:'Y-m-d\\TH:i' }}">
       </div>
 
-      <div class="form-group">
-          <label>Email</label>
-          <input name="email" class="form-control-sm" type="email" value="{{ cliente.email }}">
+      <div class="col-md-6">
+        <label>Próximo Contato</label>
+        <input name="prox_contato" class="form-control" type="datetime-local" value="{{ cliente.prox_contato|date:'Y-m-d\\TH:i' }}">
       </div>
+    </div>
 
-      <div class="form-group">
-          <label>Instagram</label>
-          <input name="instagram" class="form-control-sm" type="text" value="{{ cliente.instagram }}">
-      </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-success">Salvar Cliente</button>
+    </div>
+  </form>
 
-      <div class="form-group">
-          <label>CNPJ</label>
-          <input name="cnpj" class="form-control-sm" type="text" value="{{ cliente.cnpj }}">
-      </div>
-
-      <div class="form-group">
-          <label>Nº Lojas</label>
-          <input name="qtd_lojas" class="form-control-sm" type="number" value="{{ cliente.qtd_lojas }}">
-      </div>
-
-      <div class="form-group">
-          <label>CEP</label>
-          <input name="cep" class="form-control-sm" type="text" value="{{ cliente.cep }}">
-      </div>
-
-      <div class="form-group">
-          <label>Rua</label>
-          <input name="rua" class="form-control-sm" type="text" value="{{ cliente.rua }}">
-      </div>
-
-      <div class="form-group">
-          <label>Número</label>
-          <input name="numero_end" class="form-control-sm" type="text" value="{{ cliente.numero_end }}">
-      </div>
-
-      <div class="form-group">
-          <label>Bairro</label>
-          <input name="bairro" class="form-control-sm" type="text" value="{{ cliente.bairro }}">
-      </div>
-
-      <div class="form-group">
-          <label>Complemento</label>
-          <input name="complemento" class="form-control-sm" type="text" value="{{ cliente.complemento }}">
-      </div>
-
-      <div class="form-group">
-          <label>Primeiro Contato</label>
-          <input name="primeiro_contato" class="form-control-sm" type="datetime-local" value="{{ cliente.primeiro_contato|date:"Y-m-d\TH:i" }}">
-      </div>
-
-      <div class="form-group">
-          <label>Próximo contato</label>
-          <input name="prox_contato" class="form-control-sm" type="datetime-local" value="{{ cliente.prox_contato|date:"Y-m-d\TH:i" }}">
-      </div>
-      <div class="form-group">
-        <button type="submit" name="action" value="salvar_cliente" class="form-control-sm btn btn-primary">Salvar Cliente</button>
-      </div>
-
-  </div>
-</form> 
+  <hr class="my-5">
 
 <!-- Exibir Observações do Cliente -->
-<h3>Observações</h3>
-<ul>
+<h3 class="my-4">Observações</h3>
+<div class="observacoes-container">
     {% for observacao in cliente.observacoes.all %}
-    <li>
-        <form action="{% url 'editar_observacao' observacao.id_observacao %}" method="post" class="form-inline">
+    <div class="observacao-item">
+        <form action="{% url 'editar_observacao' observacao.id_observacao %}" method="post">
             {% csrf_token %}
-            <textarea name="descricao" class="form-control-sm" rows="2">{{ observacao.descricao }}</textarea>
-            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-            <a href="{% url 'excluir_observacao' observacao.id_observacao %}" class="btn btn-danger btn-sm">Excluir</a>
+            <div class="observacao-conteudo">
+                <textarea name="descricao" class="observacao-texto form-control" rows="2">{{ observacao.descricao }}</textarea>
+                <div class="observacao-botoes">
+                    <button type="submit" class="btn btn-outline-secondary btn-salvar">Salvar</button>
+                    <a href="{% url 'excluir_observacao' observacao.id_observacao %}" class="btn btn-outline-danger btn-excluir">Excluir</a>
+                </div>
+            </div>
         </form>
-    </li>
+    </div>
     {% empty %}
     <p>Não há observações cadastradas.</p>
     {% endfor %}
-</ul>
+</div>
 
 <!-- Adicionar Nova Observação -->
-<form action="{% url 'adicionar_observacao' cliente.id_cliente %}" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <label>Adicionar Nova Observação</label>
-        <textarea name="nova_observacao_texto" class="form-control-sm" rows="3"></textarea>
-    </div>
+<h3 class="mt-4">Adicionar Nova Observação</h3>
+<div class="observacao-item">
+    <form action="{% url 'adicionar_observacao' cliente.id_cliente %}" method="post">
+        {% csrf_token %}
+        <div class="observacao-conteudo">
+            <textarea name="nova_observacao_texto" class="observacao-texto form-control" rows="2" placeholder="Digite uma nova observação..."></textarea>
+            <div class="observacao-botoes">
+                <button type="submit" class="btn btn-outline-secondary btn-salvar">Salvar Observação</button>
+            </div>
+        </div>
+    </form>
+</div>
 
-    <div class="form-group">
-        <button type="submit" class="form-control-sm btn btn-primary">Salvar Observação</button>
-    </div>
-</form>
+<style>
+/* Contêiner principal para observações */
+.observacoes-container {
+    margin-top: 10px;
+}
+
+/* Cada observação aparece como uma caixa com sombra */
+.observacao-item {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Organização de conteúdo e botões na observação */
+.observacao-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Campo de texto para observações */
+.observacao-texto {
+    border: none;
+    background: none;
+    resize: none;
+    width: 100%;
+    padding: 4px;
+    font-size: 13px;
+    color: #333;
+    height: 1.0em;
+}
+
+/* Botões de ação da observação */
+.observacao-botoes {
+    display: flex;
+    gap: 8px;
+}
+
+/* Botão Salvar e Excluir */
+.btn-salvar, .btn-excluir {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.btn-salvar {
+    color: #007bff;
+}
+
+.btn-excluir {
+    color: #dc3545;
+}
+</style>
+
+<script>
+  document.getElementById('btn-pesquisar').addEventListener('click', function () {
+    const cep = document.getElementById('cep').value.replace(/\D/g, '');
+    if (cep.length !== 8) {
+      alert('CEP inválido! Por favor, insira um CEP válido.');
+      return;
+    }
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.erro) {
+          alert('CEP não encontrado!');
+        } else {
+          document.getElementById('rua').value = data.logradouro;
+          document.getElementById('bairro').value = data.bairro;
+          document.getElementById('cidade').value = data.localidade;
+          document.getElementById('estado').value = data.uf;
+        }
+      })
+      .catch(error => console.error('Erro:', error));
+  });
+</script>
 
 {% endblock %}
