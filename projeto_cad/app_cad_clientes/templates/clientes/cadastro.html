@@ -9,11 +9,11 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label>Empresa</label>
-            <input name="empresa" class="form-control" type="text">
+            <input name="empresa" class="form-control" type="text" required>
         </div>
         <div class="col-md-6">
             <label>Status</label>
-            <select name="status" class="form-control">
+            <select name="status" class="form-control" required>
                 <option value="Sondagem">Sondagem</option>
                 <option value="Apresentando">Apresentando</option>
                 <option value="Negociando">Negociando</option>
@@ -119,27 +119,17 @@
       </div>
     </div>
 
-    <div class="text-center">
-      <button type="submit" class="btn btn-success">Cadastrar Cliente</button>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <label>Observações</label>
+      <textarea name="observacoes" class="observacao-texto form-control" rows="2" placeholder="Digite uma nova observação..." required></textarea>
     </div>
-  </form>
+  </div>
 
-  <hr class="my-5">
-
-<!-- Seção de Observações para Cadastro -->
-<h3 class="my-4">Observações</h3>
-<div class="observacoes-container">
-    <div class="observacao-item">
-        <form action="{% url 'adicionar_observacao' cliente.id_cliente %}" method="post">
-            {% csrf_token %}
-            <div class="observacao-conteudo">
-                <textarea name="nova_observacao_texto" class="observacao-texto form-control" rows="2" placeholder="Digite uma nova observação..."></textarea>
-                <div class="observacao-botoes">
-                    <button type="submit" class="btn btn-outline-secondary btn-salvar">Salvar Observação</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-success">Cadastrar Cliente</button>
+  </div>
+</form>
 </div>
 
 <style>
