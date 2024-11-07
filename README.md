@@ -14,7 +14,7 @@ Onde sua principal "dor", era a necessidade de centralização de informações 
 
 
 
-![Tela Inicial- Web](../demo-repository/projeto_cad/static/imagens/tela_home01.png)
+![Tela Inicial- Web](./img/tela_home01.png)
 
 &nbsp;
 
@@ -126,7 +126,7 @@ python manage.py runserver
 
 - **Responsividade**
 
-![Tela Inicial- Web](../demo-repository/projeto_cad/static/imagens/responsividades_01_01.png)
+![Tela Inicial- Responsividade](./img/responsividades_01_01.png)
 
 &nbsp;
 
