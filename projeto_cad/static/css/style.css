@@ -1,0 +1,78 @@
+
+  
+/* Body e informações gerais*/
+
+* {
+    font-family: Helvetica;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .html, body{
+    height: 100%;
+    background-color:	#f8f9fa;
+    transition: 0.3s;
+  }
+
+  header {
+    display:contents;
+    position: relative; 
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  
+/* CSS de Dark Mode*/
+  .bi {
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  
+  .bi-moon {
+    display: none;
+  }
+
+
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
+    
+/* Cards de Elementos: Imagem, Agenda do Dia, Footer e Navbar*/
+
+  .card {
+    margin-top: 5rem;
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-image img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .card-details {
+    display: flex;
+    background-color: #f8f9fa;
+    justify-content:right;
+    align-items: right;
+    flex-direction: column; /* Alinha os itens verticalmente */
+  }
+  
+
+/* Estilo para o footer */
+footer {
+  background-color: #f8f9fa; /* Cor de fundo do footer */
+  text-align: center; /* Centralizar o texto */
+  padding: 20px 0; /* Espaçamento interno */
+  width: 100%; /* Largura total */
+  position: relative; /* Posição relativa */
+  bottom: 0; /* Alinhar ao fundo */
+}
+
