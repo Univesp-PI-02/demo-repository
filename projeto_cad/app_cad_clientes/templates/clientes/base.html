@@ -1,41 +1,109 @@
-<html lang="en"></html>
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Equilibre - Cadastros</title>
-  </head>
-  <body>
-    <nav style="background-color: rgb(198, 116, 22) !important;" class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">
-          <a style="text-decoration: none; color: rgb(255, 255, 255);" href="{% url 'index' %}">Início</a>
-        </span>
-        <span class="navbar-brand mb-0 h1">
-          <a style="text-decoration: none; color: rgb(255, 255, 255);" href="{% url 'cadastro' %}">Cadastro</a>
-        </span>
-        <span class="navbar-brand mb-0 h1">
-          <a style="text-decoration: none; color: rgb(255, 255, 255);" href="{% url 'listagem_clientes' %}">Busca</a>
-        </span>
-      </div>
-    </nav>
-    {%block conteudo%}
-    
-    {% endblock %}
-   
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta https-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Equilibre - Prospecção</title>
+      <link rel="icon" type='image/png' href="{% static 'imagens/solequilibre.png' %}">
+      <!-- imagem icon -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" 
+         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="{% static 'js/scripts.js'%}" defer></script>
+   </head>
+   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+      <body>
+         <header>
+            <nav style="background-color: rgb(198, 116, 22)">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+               <!-- Navbar brand -->
+               <a class="navbar-brand mt-2 mt-lg-0" href="https://equilibresemgluten.com.br/">
+               <img
+                  src="{% static 'imagens/solequilibre.png' %}
+                  "
+                  height="50"
+                  alt="equilibre"
+                  loading="lazy"/>
+               </a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarText">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" style="text-decoration: none; color: rgb(255,140,0)" href="{% url 'index' %}" >Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" style="text-decoration: none; color: rgb(255,140,0)"  href="{% url 'cadastro' %}">Cadastro</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" style="text-decoration: none; color: rgb(255,140,0)"   href="{% url 'listagem_clientes' %}">Busca</a>
+                  </li>
+               </ul>
+               <!--Imagem --><!--
+                  <div style="text-align: center;">
+                    <img decoding="async" src="{% static 'imagens/equilibre-logo.png' %}"  alt="Image Description" title="teste" >
+                  </div> -->
+               <!-- Right elements -->
+               <div class="d-flex align-items-center">
+                  <!-- Icon Instagram-->
+                  <a class="text-reset me-3" href="https://www.instagram.com/equilibresemgluten/">
+                  <i class="bi bi-instagram"></i>
+                  </a>
+                  <!-- Right elements -->
+                  <div class="d-flex align-items-center">
+                     <!-- Icon facebook-->
+                     <a class="text-reset me-3" href="https://www.facebook.com/equilibresemgluten" >
+                     <i class="bi bi-facebook"></i>
+                     </a>
+                     <!-- Right elements -->
+                     <div class="d-flex align-items-center">
+                        <!-- Icon Youtube-->
+                        <a class="text-reset me-3" href="https://www.youtube.com/channel/UC6NIn0Prz_vwQXEaMFScPJA">
+                        <i class="bi bi-youtube"></i>
+                        </a>
+                     </div>
+                  </div>
+            </nav>
+            <main>
+         </header>
+         </div> 
+         <div class="card-image">
+            <img decoding="async" src="{% static 'imagens/equilibre-logo.png' %}" height="150" positio="center" alt="Image Description" title="teste" >
+         </div>
+         <main>
+            <div class="card">
+            <div class="card-details">
+               <span>{%block conteudo%} {% endblock %}</span>
+            </div>
+            </head>
+         </main>
+         <footer class="bg-light text-center text-lg-start">
+            <div class="container p-4">
+            <div class="text-center p-3" style="background-color: rgba(	255,218,185);">
+            <div class="text-dark">
+               © Copyright 2025 - Equilibre | Todos os Direitos Reservados -  (11) 4487-2020 - 
+               <a href="mailto:vendas@equilibresemgluten.com.br?subject= My Subject Line"
+                  target="_blank">vendas@equilibresemgluten</a>
+            </div>
+         </footer>
+         <!-- Conteúdo da página libras-->
+         <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+               <div class="vw-plugin-top-wrapper"></div>
+            </div>
+         </div>
+         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+         <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+         </script>
+   </body>
+   <!-- Fim do corpo da página -->
+   </body>
 </html>
