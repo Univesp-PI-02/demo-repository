@@ -4,9 +4,9 @@
 
 ### :bulb: **Sobre o **Equilibre - Prospecção**:**
 
-O **Equilibre - Prospecção** é uma ferramenta de CRM(Customer Relationship Management), o qual tem como principal objetivo, realizar o registro e a gestão de prospecção de novos clientes. 
+O **Equilibre - Prospecção** é uma ferramenta de **CRM (Customer Relationship Management)**, o qual tem como principal objetivo, realizar o registro e a gestão de prospecção de novos clientes. 
 
-Como cenário, foi realizado o estudo e a parametrização das soluções na empresa, **Equilibre Sem Glúten**, empresa especialista em prover produtos naturais e especiais não perecíveis.
+Como cenário, foi realizado o estudo e a parametrização das soluções na empresa, [Equilibre Sem Glúten](https://equilibresemgluten.com.br/), empresa especialista em prover produtos naturais e especiais não perecíveis.
 
 Onde sua principal "dor", era a necessidade de centralização de informações de prospecção de novos clientes, mediante uma ferramenta moderna, de fácil acesso, que substituísse o uso de planilhas e que provê informações de forma uniforme e em tempo real. 
 
@@ -21,7 +21,7 @@ Onde sua principal "dor", era a necessidade de centralização de informações 
 
 ### :link: Projeto Integrador II - Website
 
-Link do projeto consolidado na Web: [Equilibre - Prospecção](#)
+Link do projeto consolidado na Web: [Equilibre - Prospecção](https://equilibresemgluten-cad.onrender.com/)
 
 
 &nbsp;
