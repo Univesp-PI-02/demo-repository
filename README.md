@@ -28,7 +28,7 @@ Link do projeto consolidado na Web: [Equilibre - Prospecção](https://equilibre
 
 ### :movie_camera: Projeto Integrador II - Youtube
 
-Link do projeto consolidado e da apresentação no: [Youtube](#)
+Link do projeto consolidado e da apresentação no: [Youtube](https://www.youtube.com/watch?v=gHHSBu7Sxk0)
 
 
 &nbsp;
