@@ -117,3 +117,6 @@ def excluir_observacao(request, id_observacao):
     cliente_id = observacao.id_cliente.id_cliente
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
+
+def dashboard(request):
+    return render(request, 'clientes/dashboard.html')
