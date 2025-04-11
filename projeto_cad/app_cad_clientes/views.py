@@ -117,3 +117,20 @@ def excluir_observacao(request, id_observacao):
     cliente_id = observacao.id_cliente.id_cliente
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
+
+# Filtro de clientes
+def busca_clientes(request):
+    # Obtém os parâmetros de busca
+    empresa = request.GET.get('empresa', '')
+    cidade = request.GET.get('cidade', '')
+
+    # Filtra os clientes com base nos parâmetros
+    clientes = Clientes.objects.all()
+    if empresa:
+        clientes = clientes.filter(empresa__icontains=empresa)
+    if cidade:
+        clientes = clientes.filter(cidade__icontains=cidade)
+
+    # Renderiza o template com os resultados
+    context = {'clientes': clientes}
+    return render(request, 'clientes/busca.html', context)
