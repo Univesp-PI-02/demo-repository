@@ -43,6 +43,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 -  [VSCode](https://code.visualstudio.com/);
 -  [Django](https://www.djangoproject.com/download/);
 -  [Git Bash](https://git-scm.com);
+-  [Docker](https://www.docker.com/products/docker-desktop/);
 -  Possuir uma conta no [Github](https://github.com/).
 
 &nbsp;
@@ -113,6 +114,23 @@ python manage.py runserver
 
 > A aplicação irá rodar através do endereço local: ***http://127.0.0.1:8000/***
 
+Preferencialmente, em caso de testes ou ambiente de desenvolvimento, deve-se rodar a aplicação com o Docker.
+
+Para usar este recurso é preciso ter dois programas instalados em seu compudador:
+* [wsl](https://learn.microsoft.com/pt-br/windows/wsl/install)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+Abaixo um tutorial de como instalar e usar:
+https://www.youtube.com/watch?v=T_eFZB_kVD8
+
+
+Ao buildar pelo "docker-compose.dev" terão 2 conteiners em sua máquina, um do Django e outro do MySQL, sendo assim,
+o desenvolvedor não irá depender de conexão com o banco de produção.
+
+É importante salientar que você deve criar um arquivo ".env" na raiz do projeto para disponiblizar as variáveis de ambiente à aplicação.
+
+Para fins de auxílio, existe na raiz do projeto o arquivo "env.example.txt" com os nomes das variáveis que o
+projeto precisa.
 
 &nbsp;
 
