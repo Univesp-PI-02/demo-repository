@@ -12,4 +12,5 @@ urlpatterns = [
     path('excluir_observacao/<int:id_observacao>/', views.excluir_observacao, name='excluir_observacao'),
     path('adicionar_observacao/<int:id_cliente>/', views.adicionar_observacao, name='adicionar_observacao'),
     path('busca/', views.busca_clientes, name='busca_clientes'),
+    path('exportar_clientes/', views.exportar_clientes_csv, name='exportar_clientes'),
 ]

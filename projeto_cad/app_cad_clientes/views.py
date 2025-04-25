@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
 from datetime import date
+import csv
+from django.http import HttpResponse
+
 
 
 def index(request):
@@ -118,6 +121,7 @@ def excluir_observacao(request, id_observacao):
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
 
+
 # Filtro de clientes
 def busca_clientes(request):
     # Obtém os parâmetros de busca
@@ -134,3 +138,36 @@ def busca_clientes(request):
     # Renderiza o template com os resultados
     context = {'clientes': clientes}
     return render(request, 'clientes/busca.html', context)
+
+
+# Gerar Arquivos CSV
+
+def exportar_clientes_csv(request):
+    # Filtra os clientes com base nos parâmetros de busca (se aplicável)
+    empresa = request.GET.get('empresa', '')
+    cidade = request.GET.get('cidade', '')
+
+    clientes = Clientes.objects.all()
+    if empresa:
+        clientes = clientes.filter(empresa__icontains=empresa)
+    if cidade:
+        clientes = clientes.filter(cidade__icontains=cidade)
+
+    # Cria a resposta HTTP com o tipo de conteúdo CSV
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="clientes.csv"'
+
+    # Escreve os dados no arquivo CSV
+    writer = csv.writer(response)
+    writer.writerow(['Empresa', 'Status', 'Segmento', 'Contato', 'Telefone', 'Cidade', 'Estado', 'Email', 'Instagram', 'CNPJ', 'Nº Lojas', 'Próximo Contato'])
+    for cliente in clientes:
+        writer.writerow([
+            cliente.empresa, cliente.status, cliente.segmento, cliente.contato,
+            cliente.telefone, cliente.cidade, cliente.estado, cliente.email,
+            cliente.instagram, cliente.cnpj, cliente.qtd_lojas, cliente.prox_contato
+        ])
+
+    return response
+
+
+    
