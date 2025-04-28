@@ -153,11 +153,14 @@ projeto precisa.
 
 Relação das desenvolvedoras que contribuíram para a reaização deste projeto. 👏
 
-|**Alunas**|
+|**Alunos**|
 |----|
 |[Thais Faustino](https://github.com/thaiisfaustino)| 
 |[Renata Caroline de Oliveira](https://github.com/renataoliveira93)| 
 |[Ana Laura Martins Francisco](https://github.com/AnafraUnivesp)| 
+|[Miguel Felipe Napolitano](https://github.com/Miguelnapolitano)| 
+|[Enzo Bonazzi](https://github.com/enzobonazzi)| 
+|[Cristhian Vian](https://github.com/Cristhian-Vian)| 
 
 &nbsp;
 
@@ -180,13 +183,13 @@ Informações acadêmicas do projeto.
 | **Informações** | **Descrição** |
 |----|-----|
 |**Instituição**| [UNIVESP - Universidade Virtual do Estado de São Paulo](https://univesp.br/) |
-|**Disciplina**| Projeto Integrador em Computação II |
+|**Disciplina**| Projeto Integrador em Computação III |
 |**Cursos**| Engenharia de Computação/Bacharelado em Tecnologia da Informação/Bacharelado em Ciência de Dados|
-|**Grupo**| DRP04-PJI240-SALA-001GRUPO-006  |
-|**Período**| Segundo Semestre - 2024 |
+|**Grupo**| DRP04-PJI310-SALA-001GRUPO-011  | 
+|**Período**| Quinto semestre - 2025 |
 |**Temática**|Resolução de problemas. Levantamento de requisitos. Desenvolvimento web com framework. HTML. CSS. Linguagem de script. Banco de Dados. Controle de Versão. Nuvem. API. Acessibilidade. Testes. Análise de dados.
 |**Objetivos da disciplina** | Desenvolver um software com framework web que utilize banco de dados, inclua script web (Javascript), nuvem, uso de API, acessibilidade, controle de versão e testes. Opcionalmente, incluir análise de dados.|
-|**Orientação**| Camila Rodrigues Silva |
+|**Orientação**| Thalita Domingues Prado |
 
 &nbsp;
 
