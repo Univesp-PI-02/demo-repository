@@ -6,7 +6,6 @@ import csv
 from django.http import HttpResponse
 
 
-
 def index(request):
     hoje = timezone.now()
     clientes_hoje = Clientes.objects.filter(
