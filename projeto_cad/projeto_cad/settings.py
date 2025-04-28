@@ -22,20 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-#CSRF_TRUSTED_ORIGINS = ["https://projeto-cad-test.onrender.com"]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
-CSRF_TRUSTED_ORIGINS = [
-   # "https://example.com",  # URL de produção
-    #"https://www.example.com",  # Subdomínio
-    "http://localhost:8000",  # Ambiente local
-    "http://127.0.0.1:8000",  # Ambiente local com IP
-]
+CSRF_TRUSTED_ORIGINS = ["https://projeto-cad-test.onrender.com"]
 
 port = os.getenv("PORT", "8000")
 
@@ -86,27 +80,16 @@ WSGI_APPLICATION = "projeto_cad.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-#DATABASES = {
-    #'default': {
-       # 'ENGINE': 'django.db.backends.postgresql',
-      # 'NAME': os.getenv('DB_NAME'),
-     #   'USER': os.getenv('DB_USER'),
-    #   'PASSWORD': os.getenv('DB_PASSWORD'),
-   #     'HOST': os.getenv('DB_HOST'),
-  #      'PORT': os.getenv('DB_PORT', '5432'),
- #   }
-#}
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+       'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+       'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
-
 
 
 
@@ -132,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "pt-br"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
