@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
+from django.utils import timezone
 from datetime import date
 import csv
 from django.http import HttpResponse
@@ -7,8 +8,10 @@ from django.http import HttpResponse
 
 
 def index(request):
-    hoje = date.today()
-    clientes_hoje = Clientes.objects.filter(prox_contato=hoje)
+    hoje = timezone.now()
+    clientes_hoje = Clientes.objects.filter(
+        prox_contato__date=hoje
+    )
     context = {
         'clientes_hoje': clientes_hoje
     }
@@ -121,7 +124,6 @@ def excluir_observacao(request, id_observacao):
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
 
-
 # Filtro de clientes
 def busca_clientes(request):
     # Obtém os parâmetros de busca
@@ -169,5 +171,3 @@ def exportar_clientes_csv(request):
 
     return response
 
-
-    
