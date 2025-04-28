@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
-from datetime import date
+from django.utils import timezone
 
 
 def index(request):
-    hoje = date.today()
-    clientes_hoje = Clientes.objects.filter(prox_contato=hoje)
+    hoje = timezone.now()
+    clientes_hoje = Clientes.objects.filter(
+        prox_contato__date=hoje
+    )
     context = {
         'clientes_hoje': clientes_hoje
     }

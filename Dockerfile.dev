@@ -1,0 +1,26 @@
+FROM python:3.12.7-alpine3.19
+LABEL maintainer="thaisfsouza@outlook.com"
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Dependências do sistema
+RUN apk add --no-cache gcc musl-dev libffi-dev postgresql-dev curl
+
+# Diretório de trabalho consistente com o volume
+WORKDIR /code
+
+# Copia só o requirements e instala dependências
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Usuário não-root (bom para segurança, mas deve bater com user do compose)
+RUN adduser -D appuser
+USER appuser
+
+# Porta de exposição
+EXPOSE 8000
+
+# Espera o banco ficar pronto antes de rodar o servidor
+CMD ["sh", "-c", "while ! nc -z db 5432; do sleep 1; done && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
