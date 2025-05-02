@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
 from datetime import date
-
+from django.http import JsonResponse
+from django.db.models.functions import TruncMonth, TruncYear
+from django.db.models import Count
 
 def index(request):
     hoje = date.today()
@@ -120,3 +122,15 @@ def excluir_observacao(request, id_observacao):
 
 def dashboard(request):
     return render(request, 'clientes/dashboard.html')
+
+def dados_grafico(request):
+    dados = Clientes.objects.annotate(
+        ano=TruncYear('prox_contato'),
+        mes=TruncMonth('prox_contato')
+    ).values('ano', 'mes').annotate(total=Count('id_cliente')).order_by('ano', 'mes')
+
+    return JsonResponse({
+        "anos": [d["ano"].year for d in dados],
+        "meses": [d["mes"].month for d in dados],
+        "totais": [d["total"] for d in dados]
+    })

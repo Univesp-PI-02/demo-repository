@@ -28,40 +28,28 @@
    </div>
 
    <script>
-      var xValue = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
-
-      var yValue = [20, 14, 25, 16, 18, 22, 19, 15, 12, 16, 14, 17];
-
-      var trace1 = {
-         x: xValue,
-         y: yValue,
-         type: 'bar',
-         text: yValue.map(String),
-         textposition: 'auto',
-         hoverinfo: 'none',
-         marker: {
-            color: 'rgb(255,140,0)',
-            opacity: 0.6,
-            line: {
-               color: 'rgb(215,100,0)',
-               width: 1.5
-            }
-         }
-      };
-
-      var data = [trace1];
-
-      var layout = {
-         title: {
-            text: '2025 - Contatos agendados'
-         },
-         barmode: 'stack'
-      };
-
-      Plotly.newPlot('grafico', data, layout);
-
+      fetch('/api/dados_grafico/')
+      .then(response => response.json())
+      .then(data => {
+         var mesesFormatados = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+         
+         var xValue = data.meses.map((m, i) => mesesFormatados[m - 1] + ' ' + data.anos[i]); 
+         var yValue = data.totais;
+   
+         var trace1 = {
+            x: xValue,
+            y: yValue,
+            type: 'bar',
+            text: yValue.map(String),
+            textposition: 'auto',
+            marker: { color: 'rgb(255,140,0)', opacity: 0.6 }
+         };
+   
+         Plotly.newPlot('grafico', [trace1], { title: { text: 'Contatos Agendados por Mês e Ano' } });
+      })
+      .catch(error => console.error('Erro ao carregar os dados:', error));
    </script>
-
+   
    {% endblock %}
 </body>
 

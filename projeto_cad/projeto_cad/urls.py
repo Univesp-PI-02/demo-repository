@@ -12,4 +12,5 @@ urlpatterns = [
     path('excluir_observacao/<int:id_observacao>/', views.excluir_observacao, name='excluir_observacao'),
     path('adicionar_observacao/<int:id_cliente>/', views.adicionar_observacao, name='adicionar_observacao'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('api/dados_grafico/', views.dados_grafico, name='dados_grafico'),
 ]
