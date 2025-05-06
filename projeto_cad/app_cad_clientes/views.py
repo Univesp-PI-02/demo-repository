@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
 from django.utils import timezone
 from datetime import date
+from django.http import JsonResponse
+from django.db.models.functions import TruncMonth, TruncYear
+from django.db.models import Count
 import csv
 from django.http import HttpResponse
-
 
 def index(request):
     hoje = timezone.now()
@@ -123,6 +125,22 @@ def excluir_observacao(request, id_observacao):
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
 
+# Dashboard
+def dashboard(request):
+    return render(request, 'clientes/dashboard.html')
+
+def dados_grafico(request):
+    dados = Clientes.objects.annotate(
+        ano=TruncYear('prox_contato'),
+        mes=TruncMonth('prox_contato')
+    ).values('ano', 'mes').annotate(total=Count('id_cliente')).order_by('ano', 'mes')
+
+    return JsonResponse({
+        "anos": [d["ano"].year for d in dados],
+        "meses": [d["mes"].month for d in dados],
+        "totais": [d["total"] for d in dados]
+    })
+
 # Filtro de clientes
 def busca_clientes(request):
     # Obtém os parâmetros de busca
@@ -169,4 +187,3 @@ def exportar_clientes_csv(request):
         ])
 
     return response
-
