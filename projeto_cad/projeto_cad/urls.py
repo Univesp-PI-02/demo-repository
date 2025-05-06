@@ -13,4 +13,6 @@ urlpatterns = [
     path('adicionar_observacao/<int:id_cliente>/', views.adicionar_observacao, name='adicionar_observacao'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('api/dados_grafico/', views.dados_grafico, name='dados_grafico'),
+    path('busca/', views.busca_clientes, name='busca_clientes'),
+    path('exportar_clientes/', views.exportar_clientes_csv, name='exportar_clientes'),
 ]

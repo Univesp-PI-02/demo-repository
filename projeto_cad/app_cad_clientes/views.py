@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Clientes, Observacoes
+from django.utils import timezone
 from datetime import date
 from django.http import JsonResponse
 from django.db.models.functions import TruncMonth, TruncYear
 from django.db.models import Count
+import csv
+from django.http import HttpResponse
 
 def index(request):
-    hoje = date.today()
-    clientes_hoje = Clientes.objects.filter(prox_contato=hoje)
+    hoje = timezone.now()
+    clientes_hoje = Clientes.objects.filter(
+        prox_contato__date=hoje
+    )
     context = {
         'clientes_hoje': clientes_hoje
     }
@@ -120,6 +125,7 @@ def excluir_observacao(request, id_observacao):
     observacao.delete()
     return redirect('editar_cliente', cliente_id)
 
+# Dashboard
 def dashboard(request):
     return render(request, 'clientes/dashboard.html')
 
@@ -134,3 +140,50 @@ def dados_grafico(request):
         "meses": [d["mes"].month for d in dados],
         "totais": [d["total"] for d in dados]
     })
+
+# Filtro de clientes
+def busca_clientes(request):
+    # Obtém os parâmetros de busca
+    empresa = request.GET.get('empresa', '')
+    cidade = request.GET.get('cidade', '')
+
+    # Filtra os clientes com base nos parâmetros
+    clientes = Clientes.objects.all()
+    if empresa:
+        clientes = clientes.filter(empresa__icontains=empresa)
+    if cidade:
+        clientes = clientes.filter(cidade__icontains=cidade)
+
+    # Renderiza o template com os resultados
+    context = {'clientes': clientes}
+    return render(request, 'clientes/busca.html', context)
+
+
+# Gerar Arquivos CSV
+
+def exportar_clientes_csv(request):
+    # Filtra os clientes com base nos parâmetros de busca (se aplicável)
+    empresa = request.GET.get('empresa', '')
+    cidade = request.GET.get('cidade', '')
+
+    clientes = Clientes.objects.all()
+    if empresa:
+        clientes = clientes.filter(empresa__icontains=empresa)
+    if cidade:
+        clientes = clientes.filter(cidade__icontains=cidade)
+
+    # Cria a resposta HTTP com o tipo de conteúdo CSV
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="clientes.csv"'
+
+    # Escreve os dados no arquivo CSV
+    writer = csv.writer(response)
+    writer.writerow(['Empresa', 'Status', 'Segmento', 'Contato', 'Telefone', 'Cidade', 'Estado', 'Email', 'Instagram', 'CNPJ', 'Nº Lojas', 'Próximo Contato'])
+    for cliente in clientes:
+        writer.writerow([
+            cliente.empresa, cliente.status, cliente.segmento, cliente.contato,
+            cliente.telefone, cliente.cidade, cliente.estado, cliente.email,
+            cliente.instagram, cliente.cnpj, cliente.qtd_lojas, cliente.prox_contato
+        ])
+
+    return response
