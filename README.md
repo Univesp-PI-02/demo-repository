@@ -19,16 +19,16 @@ Onde sua principal "dor", era a necessidade de centralização de informações 
 &nbsp;
 
 
-### :link: Projeto Integrador II - Website
+### :link: Projeto Integrador III - Website
 
 Link do projeto consolidado na Web: [Equilibre - Prospecção](https://equilibresemgluten-cad.onrender.com/)
 
 
 &nbsp;
 
-### :movie_camera: Projeto Integrador II - Youtube
+### :movie_camera: Projeto Integrador III - Youtube
 
-Link do projeto consolidado e da apresentação no: [Youtube](https://www.youtube.com/watch?v=gHHSBu7Sxk0)
+Link do projeto consolidado e da apresentação no: [Youtube](https://youtu.be/_wRo-azqQug?si=3QX6XZX0AjSy-fNz)
 
 
 &nbsp;
@@ -59,6 +59,7 @@ Ferramentas utilizadas para a contrução do projeto:
 * [Bootstrap](https://getbootstrap.com/)
 * [HTML](https://www.youtube.com/playlist?list=PL39zbyHjgjrbsP3xFSc-YH-6FN8WNpglh) 
 * [JavaScript](https://www.w3schools.com/js/js_examples.asp)
+* [Plotly](https://plotly.com/javascript/)
 
 
 **Backend**
@@ -161,6 +162,7 @@ Relação das desenvolvedoras que contribuíram para a reaização deste projeto
 |[Miguel Felipe Napolitano](https://github.com/Miguelnapolitano)| 
 |[Enzo Bonazzi](https://github.com/enzobonazzi)| 
 |[Cristhian Vian](https://github.com/Cristhian-Vian)| 
+|[Edson de Freitas Junior](terabytejunior@hotmail.com.br)| 
 
 &nbsp;
 
@@ -170,7 +172,9 @@ Relação das desenvolvedoras que contribuíram para a reaização deste projeto
 
 |**Informações**| **Descrição** |**Data** | 
 |----|-----|-----|
+|**Release de Lançamento**| V.1.0 - Versão inicial de lançamento  | Maio/2025 |
 |**Release de Lançamento**| V.0.0 - Versão inicial de lançamento  | Novembro/2024 |
+
 
 &nbsp;
 
@@ -186,7 +190,7 @@ Informações acadêmicas do projeto.
 |**Disciplina**| Projeto Integrador em Computação III |
 |**Cursos**| Engenharia de Computação/Bacharelado em Tecnologia da Informação/Bacharelado em Ciência de Dados|
 |**Grupo**| DRP04-PJI310-SALA-001GRUPO-011  | 
-|**Período**| Quinto semestre - 2025 |
+|**Período**| Sexto semestre - 2025 |
 |**Temática**|Resolução de problemas. Levantamento de requisitos. Desenvolvimento web com framework. HTML. CSS. Linguagem de script. Banco de Dados. Controle de Versão. Nuvem. API. Acessibilidade. Testes. Análise de dados.
 |**Objetivos da disciplina** | Desenvolver um software com framework web que utilize banco de dados, inclua script web (Javascript), nuvem, uso de API, acessibilidade, controle de versão e testes. Opcionalmente, incluir análise de dados.|
 |**Orientação**| Thalita Domingues Prado |
